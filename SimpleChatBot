@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class SimpleChatBot {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Hi! My name is ChatBot. What's your name?");
+        String name = scanner.nextLine();
+        System.out.println("Nice to meet you, " + name + "! How can I assist you today?");
+
+        while (true) {
+            String message = scanner.nextLine();
+            String response = generateResponse(message);
+            System.out.println(response);
+            if (message.equalsIgnoreCase("bye")) {
+                break;
+            }
+        }
+        System.out.println("Goodbye, " + name + "!");
+    }
+
+    private static String generateResponse(String message) {
+        String response = "";
+        if (message.contains("hello") || message.contains("hi")) {
+            response = "Hello there!";
+        } else if (message.contains("how are you")) {
+            response = "I'm doing well, thank you for asking.";
+        } else if (message.contains("what is your name")) {
+            response = "My name is ChatBot.";
+        } else if (message.contains("what time is it")) {
+            response = "I'm sorry, I cannot tell you the time as I am not connected to a clock.";
+        } else if (message.contains("thank you") || message.contains("thanks")) {
+            response = "You're welcome!";
+        } else {
+            response = "I'm sorry, I don't understand what you're asking. Can you please rephrase your question?";
+        }
+        return response;
+    }
+}
